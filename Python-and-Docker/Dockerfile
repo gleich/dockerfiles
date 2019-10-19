@@ -15,3 +15,5 @@ RUN apt-get -qq -y install python3-pip
 
 # Installing Docker
 RUN apt-get -qq -y install docker
+
+CMD ["python3"]
