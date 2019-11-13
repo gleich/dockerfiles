@@ -1,0 +1,26 @@
+name: Docker-Hub 
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Login to Docker Hub
+        run: |
+          echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_id }} --password-stdin
+      - name: Building Images
+        run: |
+          docker build -t mattgleich/git-and-python git-and-python
+          docker build -t mattgleich/docker-and-python docker-and-python
+      - name: Pushing Images to Docker Hub
+        run: |
+          docker push mattgleich/git-and-python
+          docker push mattgleich/docker-and-python
