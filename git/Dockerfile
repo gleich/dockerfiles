@@ -2,14 +2,13 @@
 # Image is registered under the MIT license
 # The mainatainer for this image is Matthew Gleich (Matt-Gleich)
 
-FROM ubuntu
+FROM jfloff/alpine-python:3.7
 
 # Metadata
 LABEL mainatainer "matthewgleich@gmail.com"
-LABEL description "Ubuntu image with git"
+LABEL description "Alpine image with python and git"
 
-# Installing Python
-RUN apt-get update
-RUN apt-get -qq -y install git
+# Installing Git
+RUN apk add --no-cache git
 
 CMD ["git", "--version"]
