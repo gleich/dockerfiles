@@ -9,6 +9,6 @@ LABEL mainatainer "matthewgleich@gmail.com"
 LABEL description "Image that comes with Python3 and Docker installed"
 
 # Installing Python and Pip
-RUN apk add --no-cache python3
+RUN apk add --no-cache python3.6
 
 CMD ["python3"]
