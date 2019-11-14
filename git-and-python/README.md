@@ -1,12 +1,12 @@
-# mattgleich/git
+# mattgleich/git-and-python
 
-![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/git)
+![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/git-and-python)
 
 
 
 ## Registry
 
-[View on DockerHub](https://hub.docker.com/r/mattgleich/git)
+[View on DockerHub](https://hub.docker.com/r/mattgleich/git-and-python)
 
 ## Running
 
