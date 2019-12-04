@@ -3,7 +3,6 @@
 # The mainatainer for this image is Matthew Gleich (Matt-Gleich)
 
 FROM docker:stable
-FROM jfloff/alpine-python:3.6
 
 # Metadata
 LABEL mainatainer "matthewgleich@gmail.com"
