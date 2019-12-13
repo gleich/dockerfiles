@@ -16,6 +16,6 @@ RUN apt-get update -y \
     && echo 'deb [arch=armhf] https://apt.dockerproject.org/repo raspbian-jessie main' > /etc/apt/sources.list.d/docker.list \
     && curl -fsSL https://apt.dockerproject.org/gpg | apt-key add - \
     && apt-get update -y \
-    && apt-get install -y docker-engine \
+    && apt-get install -y docker-ce \
     && mkdir -p /etc/docker \
     && echo '{ "insecure-registries":["registry:5000"] }' > /etc/docker/daemon.json
