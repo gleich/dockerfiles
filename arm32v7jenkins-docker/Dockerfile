@@ -4,7 +4,7 @@ LABEL maintainer="matthewgleich@gmail.com"
 LABEL description="ARM based jenkins image that comes with docker installed"
 
 USER root
-RUN sudo apt-get update -y && sudo apt-get upgrade -y
+RUN apt-get update -y && apt-get upgrade -y
 RUN sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
