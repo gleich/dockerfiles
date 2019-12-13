@@ -3,18 +3,19 @@ FROM jenkins4eval/jenkins:slim-arm
 LABEL maintainer="matthewgleich@gmail.com"
 LABEL description="ARM based jenkins image that comes with docker installed"
 
-USER root
-RUN apt install gnupg
-RUN mkdir ~/.gnupg
-RUN echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
-RUN apt-key adv --keyserver pool.sks-keyservers.net --recv-keys ED75B5A4483DA07C
-RUN apt-get update -qq \
-    && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common 
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-RUN add-apt-repository \
-    "deb [arch=arm] https://download.docker.com/linux/debian \
-    $(lsb_release -cs) \
-    stable"
-RUN apt-get update  -qq \
-    && apt-get install docker -y
-RUN usermod -aG docker jenkins
+RUN apt-get update -y \
+    && sed -i 's/wheezy/jessie/' /etc/apt/sources.list \
+    && apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get dist-upgrade -y \
+    && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    python-software-properties \
+    && echo 'deb [arch=armhf] https://apt.dockerproject.org/repo raspbian-jessie main' > /etc/apt/sources.list.d/docker.list \
+    && curl -fsSL https://apt.dockerproject.org/gpg | apt-key add - \
+    && apt-get update -y \
+    && apt-get install -y docker-engine \
+    && mkdir -p /etc/docker \
+    && echo '{ "insecure-registries":["registry:5000"] }' > /etc/docker/daemon.json
