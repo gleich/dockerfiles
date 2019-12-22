@@ -21,7 +21,7 @@ jobs:
           echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_id }} --password-stdin
       - name: Building Images
         run: |
-          docker build -f workspace/mac.Dockerfile -t mattgleich/workspace:mac
+          docker build -f workspace/mac.Dockerfile -t mattgleich/workspace:mac .
       - name: Pushing Images to Docker Hub
         run: |
           docker push mattgleich/workspace:mac
