@@ -16,6 +16,7 @@ jobs:
       - name: Installing Docker
         run: |
           brew install docker
+          sudo service docker restart
       - name: Login to Docker Hub
         run: |
           echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_id }} --password-stdin
