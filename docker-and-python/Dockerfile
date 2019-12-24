@@ -5,7 +5,7 @@
 FROM docker:stable
 
 # Metadata
-LABEL mainatainer "matthewgleich@gmail.com"
+LABEL maintainer "matthewgleich@gmail.com"
 LABEL description "Image that comes with Python3 and Docker installed"
 
 # Installing Python and Pip
