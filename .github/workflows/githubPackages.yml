@@ -1,0 +1,25 @@
+name: Docker-Hub
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: 🔐 Login to Github Packages
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u Matt-Gleich --password-stdin
+      - name: 🏗️ Building Images
+        run: |
+          docker build -t docker.pkg.github.com/matt-gleich/dockerfiles/git-and-python ./git-and-python
+          docker build -t docker.pkg.github.com/matt-gleich/dockerfiles/docker-and-python ./docker-and-python
+      - name: 🚀 Pushing Images to Github Packages
+        run: |
+          docker push docker.pkg.github.com/matt-gleich/dockerfiles/git-and-python
+          docker push docker.pkg.github.com/matt-gleich/dockerfiles/docker-and-python
